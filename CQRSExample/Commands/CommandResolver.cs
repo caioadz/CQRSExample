@@ -1,6 +1,4 @@
-﻿using CQRSExample.Commands;
-
-namespace CQRSExample
+﻿namespace CQRSExample.Commands
 {
     public class CommandResolver
     {
@@ -16,7 +14,7 @@ namespace CQRSExample
             serviceProvider.GetService<CommandHandler<TCommand>>().Execute(command);
         }
 
-        public TCommandResult Execute<TCommand, TCommandResult>(TCommand command) 
+        public TCommandResult Execute<TCommand, TCommandResult>(TCommand command)
                 where TCommand : Command
                 where TCommandResult : CommandResult
         {

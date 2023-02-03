@@ -1,4 +1,3 @@
-using CQRSExample;
 using CQRSExample.Commands;
 using CQRSExample.Commands.Address;
 
