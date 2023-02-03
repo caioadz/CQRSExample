@@ -7,12 +7,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSingleton<CommandHandler<AddAddressCommand, AddAddressCommandResult>, AddAddressCommandHandler>();
-builder.Services.AddSingleton<CommandHandler<AddAddressCommand>, AddAddressCommandHandler>();
-builder.Services.AddSingleton<CommandHandler<RemoveAddressCommand>, RemoveAddressCommandHandler>();
-builder.Services.AddSingleton<CommandHandler<UpdateAddressCommand>, UpdateAddressCommandHandler>();
-
-builder.Services.AddSingleton<CommandResolver>();
+builder.Services.AddScoped<CommandHandler<AddAddressCommand, AddAddressCommandResult>, AddAddressCommandHandler>();
+builder.Services.AddScoped<CommandHandler<AddAddressCommand>, AddAddressCommandHandler>();
+builder.Services.AddScoped<CommandHandler<RemoveAddressCommand>, RemoveAddressCommandHandler>();
+builder.Services.AddScoped<CommandHandler<UpdateAddressCommand>, UpdateAddressCommandHandler>();
+builder.Services.AddScoped<CommandResolver>();
 
 var app = builder.Build();
 
