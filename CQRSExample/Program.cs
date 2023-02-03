@@ -13,7 +13,7 @@ builder.Services.AddSingleton<CommandHandler<AddAddressCommand>, AddAddressComma
 builder.Services.AddSingleton<CommandHandler<RemoveAddressCommand>, RemoveAddressCommandHandler>();
 builder.Services.AddSingleton<CommandHandler<UpdateAddressCommand>, UpdateAddressCommandHandler>();
 
-builder.Services.AddSingleton<CommandBuilder>();
+builder.Services.AddSingleton<CommandResolver>();
 
 var app = builder.Build();
 

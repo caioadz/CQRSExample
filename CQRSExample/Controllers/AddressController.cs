@@ -10,12 +10,11 @@ namespace CQRSExample.Controllers
     [ApiController]
     public class AddressController : ControllerBase
     {
-        private readonly CommandBuilder commandBuilder;
+        private readonly CommandResolver commandResolver;
 
-        public AddressController(
-            CommandBuilder commandBuilder)
+        public AddressController(CommandResolver commandBuilder)
         {
-            this.commandBuilder = commandBuilder;
+            this.commandResolver = commandBuilder;
         }
 
         // GET: api/<AddressController>
@@ -35,9 +34,12 @@ namespace CQRSExample.Controllers
         // POST api/<AddressController>
         [HttpPost]
         public IActionResult Post(AddAddressCommand command)
-        {
-            commandBuilder.Execute(command);
-            var result = commandBuilder.Execute<AddAddressCommand, AddAddressCommandResult>(command);
+        {            
+            var result = commandResolver.Execute<AddAddressCommand, AddAddressCommandResult>(command);
+
+            //Same command with void result
+            commandResolver.Execute(command);
+
             return Ok(result);
         }
 
@@ -45,7 +47,7 @@ namespace CQRSExample.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(UpdateAddressCommand command)
         {
-            commandBuilder.Execute(command);
+            commandResolver.Execute(command);
             return Ok();
         }
 
@@ -53,7 +55,7 @@ namespace CQRSExample.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(RemoveAddressCommand command)
         {
-            commandBuilder.Execute(command);
+            commandResolver.Execute(command);
             return Ok();
         }
     }

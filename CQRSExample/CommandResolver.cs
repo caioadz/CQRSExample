@@ -2,11 +2,11 @@
 
 namespace CQRSExample
 {
-    public class CommandBuilder
+    public class CommandResolver
     {
         private IServiceProvider serviceProvider;
 
-        public CommandBuilder(IServiceProvider serviceProvider)
+        public CommandResolver(IServiceProvider serviceProvider)
         {
             this.serviceProvider = serviceProvider;
         }
